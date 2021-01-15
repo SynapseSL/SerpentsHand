@@ -19,6 +19,7 @@ namespace SerpentsHand
                     ply.RoleID = 30;
 
                 ev.Allow = false;
+                Server.Get.Map.GlitchedCassie(PluginClass.Config.Cassie);
             }
         }
 

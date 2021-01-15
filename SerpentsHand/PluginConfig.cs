@@ -19,7 +19,14 @@ namespace SerpentsHand
         [Description("The Role Name that is displayed when you look at the Player")]
         public string CustomRoleName = "<color=green>SerpentsHand</color>";
 
+        [Description("The chance that s SerpentsHand Squad spawn")]
         public float SpawnChance = 50f;
+
+        [Description("The Cassie announcement that plays when SerpentsHand Spawn")]
+        public string Cassie = "serpents hand hasentered allremaining";
+
+        [Description("The Message that get displayed when a serpentshand spawn")]
+        public string SpawnMessage = "<i>You are a <color=green>SerpentsHand</color></i>\\n<i>Your Goal is it to kill all Humans and help the scps</i>\n<b>Press Esc to close</b>";
 
         [Description("The Spawnpoint where SerpentsHand spawn")]
         public SerializedMapPoint SpawnPoint = new SerializedMapPoint("Root_*&*Outside Cams", -0.4426118f, 2.159119f, 7.987663f);

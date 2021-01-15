@@ -21,6 +21,7 @@ namespace SerpentsHand
 
             Player.DisplayInfo = PluginClass.Config.CustomRoleName;
             Player.RemoveDisplayInfo(PlayerInfoArea.Role);
+            Player.OpenReportWindow(PluginClass.Config.SpawnMessage.Replace("\\n", "\n"));
         }
 
         public override void DeSpawn()
