@@ -26,7 +26,7 @@ namespace SerpentsHand
         public string Cassie = "serpents hand hasentered allremaining";
 
         [Description("The Message that get displayed when a serpentshand spawn")]
-        public string SpawnMessage = "<i>You are a <color=green>SerpentsHand</color></i>\\n<i>Your Goal is it to kill all Humans and help the scps</i>\n<b>Press Esc to close</b>";
+        public string SpawnMessage = "<i>You are a <color=green>SerpentsHand</color></i>\\n<i>Your Goal is it to kill all Humans and help the scps</i>\\n<b>Press Esc to close</b>";
 
         [Description("The Spawnpoint where SerpentsHand spawn")]
         public SerializedMapPoint SpawnPoint = new SerializedMapPoint("Root_*&*Outside Cams", -0.4426118f, 2.159119f, 7.987663f);
