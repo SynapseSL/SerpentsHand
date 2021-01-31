@@ -15,6 +15,9 @@ namespace SerpentsHand
         {
             if(ev.Team == Respawning.SpawnableTeamType.ChaosInsurgency && UnityEngine.Random.Range(1f,100f) <= PluginClass.Config.SpawnChance)
             {
+                if (ev.Players.Count > PluginClass.Config.SpawnSize)
+                    ev.Players = ev.Players.GetRange(0, PluginClass.Config.SpawnSize);
+
                 foreach (var ply in ev.Players)
                     ply.RoleID = 30;
 

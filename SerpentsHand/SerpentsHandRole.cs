@@ -18,6 +18,9 @@ namespace SerpentsHand
             Player.RoleType = PluginClass.Config.SpawnRole;
             Player.MaxHealth = PluginClass.Config.Health;
             Player.Health = PluginClass.Config.Health;
+            Player.Ammo5 = PluginClass.Config.Ammo.Ammo5;
+            Player.Ammo7 = PluginClass.Config.Ammo.Ammo7;
+            Player.Ammo9 = PluginClass.Config.Ammo.Ammo9;
 
             Player.DisplayInfo = PluginClass.Config.CustomRoleName;
             Player.RemoveDisplayInfo(PlayerInfoArea.Role);
