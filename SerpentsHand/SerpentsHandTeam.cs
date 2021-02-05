@@ -13,6 +13,9 @@ namespace SerpentsHand
     {
         public override void Spawn(List<Player> players)
         {
+            if (players.Count > PluginClass.Config.SpawnSize)
+                players = players.GetRange(0, PluginClass.Config.SpawnSize);
+
             foreach (var ply in players)
                 ply.RoleID = 30;
 
