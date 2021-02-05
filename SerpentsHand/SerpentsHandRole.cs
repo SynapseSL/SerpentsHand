@@ -9,9 +9,11 @@ namespace SerpentsHand
 
         public override string GetRoleName() => "SerpentsHand";
 
-        public override Team GetTeam() => Team.SCP;
+        public override int GetTeamID() => 7;
 
-        public override List<Team> GetFriends() => PluginClass.Config.friendlyfire ? new List<Team> { } : new List<Team> { Team.SCP };
+        public override List<int> GetFriendsID() => PluginClass.Config.friendlyfire ? new List<int>() : new List<int> { (int)Team.SCP };
+
+        public override List<int> GetEnemiesID() => new List<int> { (int)Team.CDP, (int)Team.MTF, (int)Team.RSC };
 
         public override void Spawn()
         {

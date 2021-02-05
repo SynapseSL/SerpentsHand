@@ -20,6 +20,7 @@ namespace SerpentsHand
 
         public override void Load()
         {
+            Server.Get.TeamManager.RegisterTeam<SerpentsHandTeam>();
             Server.Get.RoleManager.RegisterCustomRole<SerpentsHandRole>();
             new EventHandlers();
             base.Load();

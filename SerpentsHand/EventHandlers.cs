@@ -13,17 +13,7 @@ namespace SerpentsHand
 
         private void Respawn(Synapse.Api.Events.SynapseEventArguments.TeamRespawnEventArgs ev)
         {
-            if(ev.Team == Respawning.SpawnableTeamType.ChaosInsurgency && UnityEngine.Random.Range(1f,100f) <= PluginClass.Config.SpawnChance)
-            {
-                if (ev.Players.Count > PluginClass.Config.SpawnSize)
-                    ev.Players = ev.Players.GetRange(0, PluginClass.Config.SpawnSize);
-
-                foreach (var ply in ev.Players)
-                    ply.RoleID = 30;
-
-                ev.Allow = false;
-                Server.Get.Map.GlitchedCassie(PluginClass.Config.Cassie);
-            }
+            if(ev.Team == Respawning.SpawnableTeamType.ChaosInsurgency && UnityEngine.Random.Range(1f,100f) <= PluginClass.Config.SpawnChance) ev.TeamID = 7;
         }
 
         private void SetClass(Synapse.Api.Events.SynapseEventArguments.PlayerSetClassEventArgs ev)
