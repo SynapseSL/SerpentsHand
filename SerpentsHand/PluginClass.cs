@@ -11,7 +11,7 @@ namespace SerpentsHand
         SynapseMajor = 2,
         SynapseMinor = 4,
         SynapsePatch = 2,
-        Version = "v.1.1.0"
+        Version = "v.1.2.0"
         )]
     public class PluginClass : AbstractPlugin
     {

@@ -11,7 +11,7 @@ namespace SerpentsHand
 
         public override int GetTeamID() => 7;
 
-        public override List<int> GetFriendsID() => PluginClass.Config.friendlyfire ? new List<int>() : new List<int> { (int)Team.SCP };
+        public override List<int> GetFriendsID() => PluginClass.Config.friendlyfire ? new List<int> { (int)Team.SCP } : new List<int> { (int)Team.SCP, 7 };
 
         public override List<int> GetEnemiesID() => new List<int> { (int)Team.CDP, (int)Team.MTF, (int)Team.RSC };
 
