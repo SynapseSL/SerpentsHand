@@ -1,5 +1,4 @@
-﻿using Synapse.Api.Roles;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace SerpentsHand
 {
@@ -26,7 +25,7 @@ namespace SerpentsHand
 
             Player.DisplayInfo = PluginClass.Config.CustomRoleName;
             Player.RemoveDisplayInfo(PlayerInfoArea.Role);
-            Player.OpenReportWindow(PluginClass.Config.SpawnMessage.Replace("\\n", "\n"));
+            Player.OpenReportWindow(PluginClass.Translation.ActiveTranslation.SpawnMessage.Replace("\\n", "\n"));
         }
 
         public override void DeSpawn()
