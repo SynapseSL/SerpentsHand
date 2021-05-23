@@ -1,7 +1,7 @@
 ## SerpentsHand
 A ScpSL plugin for Synapse that adds the SerpentsHand organization to the game. They work with the SCPs to eliminate all other beings.
 
-## Intsllation
+## Installation
 1. Install [Synapse](https://github.com/SynapseSL/Synapse/)
 2. Place the SerpentsHand.dll in your plugin folder
 3. Restart/Start your Server
