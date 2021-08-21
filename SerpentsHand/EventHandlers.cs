@@ -1,5 +1,4 @@
 ﻿using Synapse;
-using System.Linq;
 
 namespace SerpentsHand
 {
@@ -19,10 +18,7 @@ namespace SerpentsHand
         private void SetClass(Synapse.Api.Events.SynapseEventArguments.PlayerSetClassEventArgs ev)
         {
             if (ev.Player.RoleID == 30)
-            {
                 ev.Position = PluginClass.Config.SpawnPoint.Parse().Position;
-                ev.Items = PluginClass.Config.Items.Select(x => x.Parse()).ToList();
-            }
         }
     }
 }

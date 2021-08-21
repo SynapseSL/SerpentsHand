@@ -1,7 +1,7 @@
-﻿using Synapse;
+﻿using System.Collections.Generic;
+using Synapse;
 using Synapse.Api;
 using Synapse.Api.Teams;
-using System.Collections.Generic;
 
 namespace SerpentsHand
 {

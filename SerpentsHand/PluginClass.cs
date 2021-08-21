@@ -1,6 +1,6 @@
-﻿using Synapse.Api.Plugin;
+﻿using Synapse;
+using Synapse.Api.Plugin;
 using Synapse.Translation;
-using Synapse;
 
 namespace SerpentsHand
 {
@@ -10,9 +10,9 @@ namespace SerpentsHand
         LoadPriority = 1,
         Name = "SerpentsHand",
         SynapseMajor = 2,
-        SynapseMinor = 5,
-        SynapsePatch = 3,
-        Version = "v.1.2.0"
+        SynapseMinor = 7,
+        SynapsePatch = 0,
+        Version = "v.1.2.1"
         )]
     public class PluginClass : AbstractPlugin
     {

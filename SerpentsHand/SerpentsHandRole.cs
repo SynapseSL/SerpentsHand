@@ -10,7 +10,7 @@ namespace SerpentsHand
 
         public override int GetTeamID() => 7;
 
-        public override List<int> GetFriendsID() => PluginClass.Config.friendlyfire ? new List<int> { (int)Team.SCP } : new List<int> { (int)Team.SCP, 7 };
+        public override List<int> GetFriendsID() => PluginClass.Config.Friendlyfire ? new List<int> { (int)Team.SCP } : new List<int> { (int)Team.SCP, 7 };
 
         public override List<int> GetEnemiesID() => new List<int> { (int)Team.CDP, (int)Team.MTF, (int)Team.RSC };
 
@@ -19,9 +19,8 @@ namespace SerpentsHand
             Player.RoleType = PluginClass.Config.SpawnRole;
             Player.MaxHealth = PluginClass.Config.Health;
             Player.Health = PluginClass.Config.Health;
-            Player.Ammo5 = PluginClass.Config.Ammo.Ammo5;
-            Player.Ammo7 = PluginClass.Config.Ammo.Ammo7;
-            Player.Ammo9 = PluginClass.Config.Ammo.Ammo9;
+            Player.Inventory.Clear();
+            PluginClass.Config.Inventory.Apply(Player);
 
             Player.DisplayInfo = PluginClass.Config.CustomRoleName;
             Player.RemoveDisplayInfo(PlayerInfoArea.Role);
