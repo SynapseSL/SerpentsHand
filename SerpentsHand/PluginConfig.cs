@@ -26,7 +26,7 @@ namespace SerpentsHand
         public string Cassie { get; set; } = "serpents hand hasentered allremaining";
 
         [Description("The Spawnpoint where SerpentsHand spawn")]
-        public SerializedMapPoint SpawnPoint { get; set; } = new SerializedMapPoint("Root_*&*Outside Cams", -0.4426118f, 2.159119f, 7.987663f);
+        public SerializedMapPoint SpawnPoint { get; set; } = new SerializedMapPoint("Outside", -0.4426118f, 2.159119f, 7.987663f);
 
         [Description("The maximal amount of players that can spawn as SerpentsHand in one squad")]
         public int SpawnSize { get; set; } = 7;
@@ -35,9 +35,11 @@ namespace SerpentsHand
         {
             Ammo = new SerializedAmmo
             {
-                Ammo5 = 50,
-                Ammo7 = 50,
-                Ammo9 = 50,
+                Ammo5 = 40,
+                Ammo7 = 40,
+                Ammo9 = 30,
+                Ammo12 = 14,
+                Ammo44 = 18
             },
             Items = new List<SerializedPlayerItem>
             {
