@@ -45,7 +45,7 @@ namespace SerpentsHand
             {
                 new SerializedPlayerItem((int)ItemType.KeycardChaosInsurgency,0f,0u,Vector3.one,100,false),
                 new SerializedPlayerItem((int)ItemType.Medkit,0f,0u,Vector3.one,100,false),
-                new SerializedPlayerItem((int)ItemType.GunLogicer,75f,0u,Vector3.one,100,false),
+                new SerializedPlayerItem((int)ItemType.GunLogicer,100f,0u,Vector3.one,100,false),
                 new SerializedPlayerItem((int)ItemType.Painkillers,0f,0u,Vector3.one,100,false)
             }
         };
