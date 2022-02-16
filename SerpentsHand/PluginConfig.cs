@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Synapse.Config;
+using System.Collections.Generic;
 using System.ComponentModel;
-using Synapse.Config;
 using UnityEngine;
 
 namespace SerpentsHand
@@ -14,7 +14,7 @@ namespace SerpentsHand
         public RoleType SpawnRole { get; set; } = RoleType.Tutorial;
 
         [Description("The Health of SerpentsHand members")]
-        public int Health { get; set; } = 120;
+        public float Health { get; set; } = 120;
 
         [Description("The Role Name that is displayed when you look at the Player")]
         public string CustomRoleName { get; set; } = "<color=green>SerpentsHand</color>";

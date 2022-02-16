@@ -10,9 +10,9 @@ namespace SerpentsHand
         LoadPriority = 1,
         Name = "SerpentsHand",
         SynapseMajor = 2,
-        SynapseMinor = 7,
-        SynapsePatch = 1,
-        Version = "v.1.2.2"
+        SynapseMinor = 9,
+        SynapsePatch = 0,
+        Version = "v.1.2.3"
         )]
     public class PluginClass : AbstractPlugin
     {
@@ -26,6 +26,7 @@ namespace SerpentsHand
         {
             Server.Get.TeamManager.RegisterTeam<SerpentsHandTeam>();
             Server.Get.RoleManager.RegisterCustomRole<SerpentsHandRole>();
+
             Translation.AddTranslation(new PluginTranslation());
             Translation.AddTranslation(new PluginTranslation()
             {
