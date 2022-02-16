@@ -17,7 +17,7 @@ namespace SerpentsHand
         public float Health { get; set; } = 120;
 
         [Description("The Role Name that is displayed when you look at the Player")]
-        public string CustomRoleName { get; set; } = "<color=green>SerpentsHand</color>";
+        public string CustomRoleName { get; set; } = "SerpentsHand";
 
         [Description("The chance that a SerpentsHand Squad spawns instead of a Chaos")]
         public float SpawnChance { get; set; } = 50f;
