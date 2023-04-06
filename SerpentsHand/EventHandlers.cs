@@ -1,24 +1,19 @@
-﻿using Synapse;
+﻿using Neuron.Core.Events;
+using Neuron.Core.Meta;
+using Ninject;
+using Synapse3.SynapseModule.Events;
 
-namespace SerpentsHand
+namespace SerpentsHand;
+
+[Automatic]
+public class EventHandlers : Listener
 {
-    public class EventHandlers
+    [Inject]
+    public SerpentsHand Plugin { get; set; }
+
+    [EventHandler]
+    public void Select(SelectTeamEvent ev)
     {
-        public EventHandlers()
-        {
-            Server.Get.Events.Player.PlayerSetClassEvent += SetClass;
-            Server.Get.Events.Round.TeamRespawnEvent += Respawn;
-        }
-
-        private void Respawn(Synapse.Api.Events.SynapseEventArguments.TeamRespawnEventArgs ev)
-        {
-            if(ev.Team == Respawning.SpawnableTeamType.ChaosInsurgency && UnityEngine.Random.Range(1f,100f) <= PluginClass.Config.SpawnChance) ev.TeamID = 7;
-        }
-
-        private void SetClass(Synapse.Api.Events.SynapseEventArguments.PlayerSetClassEventArgs ev)
-        {
-            if (ev.Player.RoleID == 30)
-                ev.Position = PluginClass.Config.SpawnPoint.Parse().Position;
-        }
+        if (ev.TeamId == 1 && UnityEngine.Random.Range(1f, 100f) <= Plugin.Config.SpawnChance) ev.TeamId = 7;
     }
 }

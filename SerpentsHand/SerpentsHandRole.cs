@@ -1,36 +1,83 @@
 ﻿using System.Collections.Generic;
+using Neuron.Core.Meta;
+using Ninject;
+using PlayerRoles;
+using Synapse3.SynapseModule;
+using Synapse3.SynapseModule.Enums;
+using Synapse3.SynapseModule.Role;
 
-namespace SerpentsHand
+namespace SerpentsHand;
+
+public abstract class SerpentsHandRole : SynapseAbstractRole
 {
-    public class SerpentsHandRole : Synapse.Api.Roles.Role
+    [Inject]
+    public SerpentsHand Plugin { get; set; }
+    
+    public SerpentsHandTeam ShTeam { get; set; }
+    
+    protected Config.SHConfig _config;
+    protected override IAbstractRoleConfig GetConfig() => _config;
+
+    public override List<uint> GetFriendsID() => Plugin.Config.FriendlyFire
+        ? new List<uint> { (uint)Team.SCPs }
+        : new List<uint> { (uint)Team.SCPs, 7 };
+
+    public override List<uint> GetEnemiesID() => new List<uint> { (uint)Team.ClassD, (uint)Team.FoundationForces, (uint)Team.Scientists };
+
+    protected override void PreSpawn()
     {
-        public override int GetRoleID() => 30;
+        ShTeam ??= Synapse.Get<SerpentsHandTeam>();
+        _config.CustomUnitName = ShTeam.LastSpawnUnit;
+    }
+}
 
-        public override string GetRoleName() => "SerpentsHand";
+[Automatic]
+[Role(
+    Id = 30,
+    Name = "SerpentsHand Cadet",
+    TeamId = 7
+)]
+public class SerpentsHandCadet : SerpentsHandRole
+{
+    public override void Load() => _config = Plugin.Config.CadetConfig;
+    
+    protected override void OnSpawn(IAbstractRoleConfig config)
+    {
+        if (Player.PlayerType != PlayerType.Dummy)
+            Player.SendWindowMessage(Plugin.Translation.Get(Player).SpawnMessageCadet.Replace("\\n", "\n"));
+    }
+}
 
-        public override int GetTeamID() => 7;
+[Automatic]
+[Role(
+    Id = 31,
+    Name = "SerpentsHand Private",
+    TeamId = 7
+)]
+public class SerpentsHandPrivate : SerpentsHandRole
+{
+    public override void Load() => _config = Plugin.Config.PrivateConfig;
+    
+    protected override void OnSpawn(IAbstractRoleConfig config)
+    {
+        if (Player.PlayerType != PlayerType.Dummy)
+            Player.SendWindowMessage(Plugin.Translation.Get(Player).SpawnMessagePrivate.Replace("\\n", "\n"));
+    }
+}
 
-        public override List<int> GetFriendsID() => PluginClass.Config.Friendlyfire ? new List<int> { (int)Team.SCP } : new List<int> { (int)Team.SCP, 7 };
-
-        public override List<int> GetEnemiesID() => new List<int> { (int)Team.CDP, (int)Team.MTF, (int)Team.RSC };
-
-        public override void Spawn()
-        {
-            Player.RoleType = PluginClass.Config.SpawnRole;
-            Player.MaxHealth = PluginClass.Config.Health;
-            Player.Health = PluginClass.Config.Health;
-            Player.Inventory.Clear();
-            PluginClass.Config.Inventory.Apply(Player);
-
-            Player.DisplayInfo = PluginClass.Config.CustomRoleName;
-            Player.RemoveDisplayInfo(PlayerInfoArea.Role);
-            Player.OpenReportWindow(PluginClass.Translation.ActiveTranslation.SpawnMessage.Replace("\\n", "\n"));
-        }
-
-        public override void DeSpawn()
-        {
-            Player.DisplayInfo = string.Empty;
-            Player.AddDisplayInfo(PlayerInfoArea.Role);
-        }
+[Automatic]
+[Role(
+    Id = 32,
+    Name = "SerpentsHand Sergeant",
+    TeamId = 7
+)]
+public class SerpentsHandSergeant : SerpentsHandRole
+{
+    public override void Load() => _config = Plugin.Config.SergeantConfig;
+    
+    protected override void OnSpawn(IAbstractRoleConfig config)
+    {
+        if (Player.PlayerType != PlayerType.Dummy)
+            Player.SendWindowMessage(Plugin.Translation.Get(Player).SpawnMessageSergeant.Replace("\\n", "\n"));
     }
 }

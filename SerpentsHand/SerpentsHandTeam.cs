@@ -1,25 +1,62 @@
-﻿using Synapse;
-using Synapse.Api;
-using Synapse.Api.Teams;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Neuron.Core.Meta;
+using Ninject;
+using Synapse3.SynapseModule.Enums;
+using Synapse3.SynapseModule.Map;
+using Synapse3.SynapseModule.Player;
+using Synapse3.SynapseModule.Teams;
+using UnityEngine;
 
-namespace SerpentsHand
+namespace SerpentsHand;
+
+[Automatic]
+[Team(
+    Id = 7,
+    Name = "SerpentsHand"
+    )]
+public class SerpentsHandTeam : SynapseTeam
 {
-    [SynapseTeamInformation(
-        ID = 7,
-        Name = "SerpentsHand"
-        )]
-    public class SerpentsHandTeam : SynapseTeam
+    [Inject]
+    public SerpentsHand Plugin { get; set; }
+    
+    [Inject]
+    public CassieService Cassie { get; set; }
+    
+    public string LastSpawnUnit { get; set; }
+
+    public override void SpawnPlayers(List<SynapsePlayer> players)
     {
-        public override void Spawn(List<Player> players)
+        LastSpawnUnit = Plugin.Config.UnitNames[Random.Range(1, Plugin.Config.UnitNames.Count)] + "-" +
+                        Random.Range(0, 21).ToString("00");
+        
+        var count = players.Count;
+        var privates = (count - 1) / 3;
+        for (int i = 0; i < count; i++)
         {
-            if (players.Count > PluginClass.Config.SpawnSize)
-                players = players.GetRange(0, PluginClass.Config.SpawnSize);
+            var player = players[i];
+            if (i == 0)
+            {
+                player.RoleID = 32;
+                continue;
+            }
 
-            foreach (var ply in players)
-                ply.RoleID = 30;
+            if (i <= privates)
+            {
+                player.RoleID = 31;
+                continue;
+            }
 
-            Server.Get.Map.GlitchedCassie(PluginClass.Config.Cassie);
+            player.RoleID = 30;
         }
+    }
+
+    public override int MaxWaveSize => Plugin.Config.SpawnSize;
+
+    //I use 15 since it is close the Chaos/Mtf and Plugins can better predict when the respawn actually happens
+    public override float RespawnTime => 15f;
+
+    public override void RespawnAnnouncement()
+    {
+        Cassie.Announce(Plugin.Config.Cassie, CassieSettings.Noise, CassieSettings.Glitched);
     }
 }
